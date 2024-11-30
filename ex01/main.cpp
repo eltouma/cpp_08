@@ -32,7 +32,7 @@ int	main(void)
 		size_t	vectorSize;
 
 		verif(arr, 7);
-		verif(arr, 0);
+		verif(arr, -1);
 		vectorSize = arr.getVector().size();
 		if (vectorSize)
 		{
@@ -43,15 +43,14 @@ int	main(void)
 		for (size_t i = vectorSize; i < arr.getN() - 1; i++)
 		{
 		//	arr.addNumber(rand());
-			arr.addNumber(rand() % 100);
+			arr.addNumber(rand() % 1000);
 			if (i != arr.getN() - 1)
 				std::cout << arr.getVector()[i] << ", ";
 			else
 				std::cout << arr.getVector()[i];
 		}
 		verif(arr, 30);
-		vectorSize = arr.getVector().size() - 1;
-		std::cout << arr.getVector()[vectorSize] << std::endl;
+		std::cout << arr.getVector().back() << std::endl;
 		verif(arr, 8);
 		std::cout << "The shortest distance is: " << arr.shortestSpan() << std::endl;
 		std::cout << "The longest distance is: " << arr.longestSpan() << std::endl;

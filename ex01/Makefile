@@ -6,7 +6,7 @@ MAKEFLAGS += --no-print-directory
 GREEN := \e[32m
 RESET :=\e[0m
 
-SRCS = main.cpp
+SRCS = Span.cpp main.cpp
 
 OBJS_PATH = objs/
 

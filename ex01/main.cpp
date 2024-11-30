@@ -11,8 +11,20 @@
 /* ************************************************************************** */
 
 #include "Span.hpp"
+# define SIZE 10
 
 int	main(void)
 {
-	return (0);
+	try {
+		Span arr(SIZE);
+		srand(time(NULL));	
+		for (int i = 0; i < SIZE; i++)
+			arr.addNumber(rand());
+		std::cout << arr.shortestSpan() << std::endl;
+		return (0);
+	}
+	catch (const std::exception &e)
+	{
+		std::cerr << e.what() << std::endl;
+	}
 }

@@ -14,9 +14,6 @@
 #include <vector>
 #include <algorithm>
 
-// peut-etre passer le constr par defaut en prive. A voir.........mystere........
-// IMPLEMENTER DANS LE .CPP
-
 class	Span
 {
 	unsigned int _n;
@@ -24,9 +21,27 @@ class	Span
 
 public:
 	Span(void);
-	Span(unsigned int N) : _n(N) {}
+	Span(unsigned int N); 
+	Span(const Span &obj); 
+	Span& operator=(const Span &rhs);
 	~Span(void);
+	void addNumber(int n);
+	int shortestSpan(void);
+
+	class maxReachedException : public std::exception
+	{
+	public:
+		const char *what() const throw();
+	};
+
+	class arrayTooShortException : public std::exception
+	{
+	public:
+		const char *what() const throw();
+	};
+
 	// continuer la forme canonique
+/*
 	addNumber(int n) // Si n EST 10, throw une except si on tente d'en ajouter un onzieme
 	{
 		if (this->_vect.size() == _n)
@@ -39,4 +54,5 @@ public:
 		std::sort(vect.begin(), vect.end());
 	}
 //	longestSpan(std::vector<int> vect);
+*/
 };

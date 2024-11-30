@@ -27,6 +27,7 @@ public:
 	~Span(void);
 	void addNumber(int n);
 	int shortestSpan(void);
+	int longestSpan(void);
 	unsigned int const & getN(void) const;
 	std::vector<int> const & getVector(void) const;
 

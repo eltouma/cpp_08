@@ -75,6 +75,19 @@ int	Span::shortestSpan(void)
 	return (static_cast<int>(minDiff));
 }
 
+int	Span::longestSpan(void)
+{
+	long long	maxDiff;
+
+	maxDiff = LLONG_MIN;
+	if (this->_vect.size() < 2)
+		throw Span::impossibleComparisonException();
+	std::vector<int> sortedVect = this->_vect;
+	std::sort(sortedVect.begin(), sortedVect.end());
+	maxDiff = static_cast<long long>(sortedVect.back()- sortedVect.front());
+	return (static_cast<int>(maxDiff));
+}
+
 const char * Span::maxReachedException::what() const throw()
 {
 	return "\nSorry, the maximum number has been reached. It is no longer possible to add one.";

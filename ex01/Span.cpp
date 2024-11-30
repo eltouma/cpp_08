@@ -46,21 +46,33 @@ void	Span::addNumber(int n)
 	this->_vect.push_back(n);
 }
 
+unsigned int const &	Span::getN(void) const
+{
+	return (this->_n);
+}
+
+std::vector<int> const & Span::getVector(void) const
+{
+	return (this->_vect);
+}
+
 int	Span::shortestSpan(void)
 {
-	int	diff;
+	long long	minDiff;
+	long long	diff;
 
-	diff = INT_MAX;
+	minDiff = LLONG_MAX;
 	if (this->_vect.size() < 2)
-		throw Span::arrayTooShortException();
-	for (size_t i = 0; i < this->_vect.size() - 1; i++)
+		throw Span::impossibleComparisonException();
+	std::vector<int> sortedVect = this->_vect;
+	std::sort(sortedVect.begin(), sortedVect.end());
+	for (size_t i = 1; i < sortedVect.size(); i++)
 	{
-		for (size_t j = i + 1; j < this->_vect.size(); j++)
-			if (abs(this->_vect[i] - this->_vect[j]) < diff)
-				diff = abs(this->_vect[i] - this->_vect[j]);
+		diff = static_cast<long long>(sortedVect[i] - sortedVect[i - 1]);
+		if (diff < minDiff)
+			minDiff = diff;
 	}
-	std::cout << diff << std::endl;
-	return (diff);
+	return (static_cast<int>(minDiff));
 }
 
 const char * Span::maxReachedException::what() const throw()
@@ -68,7 +80,7 @@ const char * Span::maxReachedException::what() const throw()
 	return "Sorry, the maximum number has been reached. It is no longer possible to add one.";
 }
 
-const char * Span::arrayTooShortException::what() const throw()
+const char * Span::impossibleComparisonException::what() const throw()
 {
 	return "Sorry, there are not enough elements in the array to make a comparison";
 }

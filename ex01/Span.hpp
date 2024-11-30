@@ -12,6 +12,7 @@
 
 #include <iostream>
 #include <vector>
+#include <set>
 #include <algorithm>
 
 class	Span
@@ -27,6 +28,8 @@ public:
 	~Span(void);
 	void addNumber(int n);
 	int shortestSpan(void);
+	unsigned int const & getN(void) const;
+	std::vector<int> const & getVector(void) const;
 
 	class maxReachedException : public std::exception
 	{
@@ -34,7 +37,7 @@ public:
 		const char *what() const throw();
 	};
 
-	class arrayTooShortException : public std::exception
+	class impossibleComparisonException : public std::exception
 	{
 	public:
 		const char *what() const throw();

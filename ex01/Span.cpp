@@ -77,10 +77,10 @@ int	Span::shortestSpan(void)
 
 const char * Span::maxReachedException::what() const throw()
 {
-	return "Sorry, the maximum number has been reached. It is no longer possible to add one.";
+	return "\nSorry, the maximum number has been reached. It is no longer possible to add one.";
 }
 
 const char * Span::impossibleComparisonException::what() const throw()
 {
-	return "Sorry, there are not enough elements in the array to make a comparison";
+	return "\nSorry, there are not enough elements in the array to make a comparison";
 }

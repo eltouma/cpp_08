@@ -14,43 +14,44 @@
 //# define SIZE 15000
 # define SIZE 5
 
+void	verif(Span &arr, int nb)
+{
+	try {
+		arr.addNumber(nb);
+	}
+	catch (const std::exception &e)
+	{
+		std::cerr << e.what() << std::endl;
+	}
+}
+
 int	main(void)
 {
 	try {
 		Span	arr(SIZE);
 		size_t	vectorSize;
 
-		try {
-			arr.addNumber(7);
-			arr.addNumber(9);
-			arr.shortestSpan();
-		}
-		catch (const std::exception &e)
-		{
-			std::cerr << e.what() << std::endl;
-		}
+		verif(arr, 7);
+		verif(arr, 9);
 		vectorSize = arr.getVector().size();
 		if (vectorSize)
 		{
 			for (size_t i = 0; i < vectorSize; i++)
-				std::cout << arr.getVector()[0] << ", ";
+				std::cout << arr.getVector()[i] << ", ";
 		}
 		srand(time(NULL));
-		for (size_t i = vectorSize; i < arr.getN(); i++)
+		for (size_t i = vectorSize; i < arr.getN() - 1; i++)
 		{
 			arr.addNumber(rand());
-			if (i != SIZE - 1)
+			if (i != arr.getN() - 1)
 				std::cout << arr.getVector()[i] << ", ";
 			else
 				std::cout << arr.getVector()[i];
 		}
-/*
-		arr.addNumber(8);
-		for (size_t i = 0; i < arr.getN(); i++)
-			std::cout << arr.getVector()[i] << std::endl;
-*/
-		std::cout << std::endl;
-		std::cout << arr.shortestSpan() << std::endl;
+		verif(arr, 0);
+		std::cout << arr.getVector()[arr.getN()] << std::endl;
+		verif(arr, 8);
+		std::cout << "The shortest distance is: " << arr.shortestSpan() << std::endl;
 		return (0);
 	}
 	catch (const std::exception &e)

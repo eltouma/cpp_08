@@ -6,7 +6,7 @@
 /*   By: eltouma <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/29 17:52:30 by eltouma           #+#    #+#             */
-/*   Updated: 2024/11/29 18:28:04 by eltouma          ###   ########.fr       */
+/*   Updated: 2024/12/02 16:40:51 by eltouma          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,7 +62,7 @@ int	Span::shortestSpan(void)
 	long long	diff;
 
 	minDiff = LLONG_MAX;
-	if (this->_vect.size() < 2)
+	if (this->_vect.size() <= 2)
 		throw Span::impossibleComparisonException();
 	std::vector<int> sortedVect = this->_vect;
 	std::sort(sortedVect.begin(), sortedVect.end());
@@ -80,12 +80,22 @@ int	Span::longestSpan(void)
 	long long	maxDiff;
 
 	maxDiff = LLONG_MIN;
-	if (this->_vect.size() < 2)
+	if (this->_vect.size() <= 2)
 		throw Span::impossibleComparisonException();
 	std::vector<int> sortedVect = this->_vect;
 	std::sort(sortedVect.begin(), sortedVect.end());
 	maxDiff = static_cast<long long>(sortedVect.back()- sortedVect.front());
 	return (static_cast<int>(maxDiff));
+}
+
+void	Span::insertNumber(std::vector<int>::iterator begin, std::vector<int>::iterator end)
+{
+	std::vector<int> tmp;
+	std::vector<int>::iterator it;
+
+	for (it = begin; it != end; it++)
+		tmp.push_back(rand() % 100);
+	_vect.insert(_vect.end(), tmp.begin(), tmp.end());
 }
 
 const char * Span::maxReachedException::what() const throw()

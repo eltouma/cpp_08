@@ -6,7 +6,7 @@
 /*   By: eltouma <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/29 17:31:30 by eltouma           #+#    #+#             */
-/*   Updated: 2024/12/02 13:33:10 by eltouma          ###   ########.fr       */
+/*   Updated: 2024/12/02 13:40:45 by eltouma          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,13 +19,13 @@ int	main(void)
 	std::vector<int> vect;
 	std::deque<int> deq;
 
-	draw_tab("Test with list");
 	for (int i = 0; i < SIZE; i++)
 	{
 		lst.push_back(i);
 		vect.push_back(i);
 		deq.push_back(i);
 	}
+	draw_tab("Test with list");
 	std::cout << "lst size: " << lst.size() << std::endl;
 	verif(lst, lst.front());
 	verif(lst, 3);

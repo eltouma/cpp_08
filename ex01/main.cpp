@@ -6,13 +6,13 @@
 /*   By: eltouma <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/29 17:46:07 by eltouma           #+#    #+#             */
-/*   Updated: 2024/11/29 17:50:48 by eltouma          ###   ########.fr       */
+/*   Updated: 2024/12/02 10:24:28 by eltouma          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Span.hpp"
 //# define SIZE 15000
-# define SIZE 5
+# define SIZE 15
 
 void	verif(Span &arr, int nb)
 {

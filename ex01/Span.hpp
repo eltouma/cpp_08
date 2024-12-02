@@ -6,13 +6,14 @@
 /*   By: eltouma <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/29 17:52:30 by eltouma           #+#    #+#             */
-/*   Updated: 2024/11/29 18:28:04 by eltouma          ###   ########.fr       */
+/*   Updated: 2024/12/02 10:23:25 by eltouma          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <iostream>
 #include <vector>
 #include <algorithm>
+#include <limits.h>
 
 class	Span
 {

@@ -6,22 +6,48 @@
 /*   By: eltouma <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/29 17:31:30 by eltouma           #+#    #+#             */
-/*   Updated: 2024/11/29 17:41:05 by eltouma          ###   ########.fr       */
+/*   Updated: 2024/12/02 13:33:10 by eltouma          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "easyfind.hpp"
-#include <list>
-#define SIZE 10
+#include "easyfind.tpp"
 
-// Test avec vector et deque
 int	main(void)
 {
-
 	std::list<int> lst;
+	std::vector<int> vect;
+	std::deque<int> deq;
+
+	draw_tab("Test with list");
 	for (int i = 0; i < SIZE; i++)
+	{
 		lst.push_back(i);
-	std::cout << "1er element\t" << lst.front() << std::endl;
-	std::cout << "dernier element\t" << lst.back() << std::endl;
+		vect.push_back(i);
+		deq.push_back(i);
+	}
+	std::cout << "lst size: " << lst.size() << std::endl;
+	verif(lst, lst.front());
+	verif(lst, 3);
+	verif(lst, lst.back());
+	verif(lst, 150);
+	verif(lst, -1);
+	std::cout << std::endl;
+	draw_tab("Test with vector");
+	std::cout << "vector size: " << vect.size() << std::endl;
+	verif(vect, vect.front());
+	verif(vect, 1200);
+	verif(vect, vect.back() + 1);
+	verif(vect, 15);
+	verif(vect, 8);
+	std::cout << std::endl;
+	draw_tab("Test with deque");
+	std::cout << "deque original size: " << deq.size() << std::endl;
+	verif(deq, 24);
+	verif(deq, 91);
+	deq.resize(SIZE / 2);
+	std::cout << "deque new size: " << deq.size() << std::endl;
+	verif(deq, 24);
+	verif(deq, 91);
 	return (0);
 }

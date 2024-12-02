@@ -6,7 +6,7 @@
 /*   By: eltouma <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/29 17:52:30 by eltouma           #+#    #+#             */
-/*   Updated: 2024/12/02 16:17:24 by eltouma          ###   ########.fr       */
+/*   Updated: 2024/12/02 18:43:52 by eltouma          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,10 @@
 #include <vector>
 #include <algorithm>
 #include <limits.h>
-#include <cstdlib>
-//# define SIZE 15000
-# define SIZE 15
+#include <string>
+#include <sstream>
+
+# define SIZE 15000
 
 class	Span
 {
@@ -48,3 +49,8 @@ public:
 		const char *what() const throw();
 	};
 };
+
+void	draw_tab(const std::string& str, int nb);
+void	isDistanceFound(Span &vect);
+void	isMaxReached(Span &vect, int nb);
+void	print(Span &vect, size_t size);

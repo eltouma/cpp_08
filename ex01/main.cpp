@@ -53,7 +53,7 @@ int	main(void)
 		std::cout << std::endl;
 		std::cout << std::endl;
 		it = vectTest.begin();
-		vect.insertNumber(vectTest.begin(), vectTest.end());
+		vect.addNumber(vectTest.begin(), vectTest.end());
 		vectorSize = vect.getVector().size();
 		draw_tab("New size: ", vectorSize);
 		print(vect, vectorSize);

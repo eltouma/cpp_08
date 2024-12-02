@@ -6,7 +6,7 @@
 /*   By: eltouma <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/29 17:52:30 by eltouma           #+#    #+#             */
-/*   Updated: 2024/12/02 18:42:12 by eltouma          ###   ########.fr       */
+/*   Updated: 2024/12/02 21:19:21 by eltouma          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,7 +88,7 @@ int	Span::longestSpan(void)
 	return (static_cast<int>(maxDiff));
 }
 
-void	Span::insertNumber(std::vector<int>::iterator begin, std::vector<int>::iterator end)
+void	Span::addNumber(std::vector<int>::iterator begin, std::vector<int>::iterator end)
 {
 	std::vector<int> tmp;
 	std::vector<int>::iterator it;

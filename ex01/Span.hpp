@@ -35,7 +35,7 @@ public:
 	int longestSpan(void);
 	unsigned int const & getN(void) const;
 	std::vector<int> const & getVector(void) const;
-	void insertNumber(std::vector<int>::iterator begin, std::vector<int>::iterator end);
+	void addNumber(std::vector<int>::iterator begin, std::vector<int>::iterator end);
 
 	class maxReachedException : public std::exception
 	{

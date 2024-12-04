@@ -6,7 +6,7 @@
 /*   By: eltouma <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/02 19:03:00 by eltouma           #+#    #+#             */
-/*   Updated: 2024/12/04 11:51:54 by eltouma          ###   ########.fr       */
+/*   Updated: 2024/12/04 17:08:07 by eltouma          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,65 +14,112 @@
 #include "MutantStack.tpp"
 #include <list>
 
-int	main()
+void	draw_tab(const std::string& str)
+{
+	const int frame_width = 25;
+	int padding = frame_width - (static_cast<int>(str.length()));
+	int left_padding = padding / 2;
+	int right_padding = padding - left_padding;
+
+	std::cout << "\u250c";
+	for (int i = 0; i < frame_width; i++)
+		std::cout << "\u2500";
+	std::cout << "\u2510\n";
+	std::cout << "\u2502";
+	for (int i = 0; i < left_padding; i++)
+		std::cout << " ";
+	std::cout << str;
+	for (int i = 0; i < right_padding; i++)
+		std::cout << " ";
+	std::cout << "\u2502\n";
+	std::cout << "\u2514";
+	for (int i = 0; i < frame_width; i++)
+		std::cout << "\u2500";
+	std::cout << "\u2518\n\n";
+}
+
+void	printEnds(MutantStack<int> &mutant)
+{
+	std::cout << "First: " << mutant.first() << std::endl;
+	std::cout << "Last: " << mutant.top() << std::endl;
+	std::cout << "Size: " << mutant.size() << std::endl;
+}
+
+void	printEnds(std::list<int> lst)
+{
+	std::cout << "First: " << lst.front() << std::endl;
+	std::cout << "Last: " << lst.back() << std::endl;
+	std::cout << "Size: " << lst.size() << std::endl;
+}
+
+int	main(void)
 {
 	MutantStack<int> mutant;
+	MutantStack<int>::iterator beginM;
+	MutantStack<int>::iterator endM;
+	std::list<int> lst;
+	std::list<int>::iterator beginL;
+	std::list<int>::iterator endL;
+
+	draw_tab("MutantStack test");
+	mutant.push(27);
+	mutant.push(2);
 	mutant.push(5);
-	mutant.begin();
-	mutant.push(17);
-	std::cout << "top:\t" << mutant.top() << std::endl;
-//	mutant.pop();
-	std::cout << "now top:\t" << mutant.top() << std::endl;
-	std::cout << "size:\t" << mutant.size() << std::endl;
-	mutant.push(3);
-	mutant.push(5);
-	mutant.push(737);
-	//[...]
-	mutant.push(0);
-	MutantStack<int>::iterator it = mutant.begin();
-	MutantStack<int>::iterator ite = mutant.end();
-//	std::cout << "size:\t" << mutant.size() << std::endl;
+	beginM = mutant.begin();
+	endM = mutant.end();
+	std::cout << "\nOriginal mutant" << std::endl;
+	print(beginM, endM);
+	printEnds(mutant);
+	std::cout << "\nRemove last element" << std::endl;
+	mutant.pop();
+	beginM = mutant.begin();
+	endM = mutant.end();
+	print(beginM, endM);
+	printEnds(mutant);
+	for (size_t i = 2; i < 20; i+=2)
+		mutant.push(i);
+	std::cout << "\nInsert new elements" << std::endl;
+	beginM = mutant.begin();
+	endM = mutant.end();
+	mutant.insert(endM, 3, 1952);
+	beginM = mutant.begin();
+	endM = mutant.end();
+	mutant.insert(endM, 1948);
+	beginM = mutant.begin();
+	endM = mutant.end();
+	print(beginM, endM);
+	printEnds(mutant);
+
 	std::cout << std::endl;
-	std::cout << "top:\t" << mutant.top() << std::endl;
-	std::cout << "last before insert 24:\t" << mutant.back() << std::endl;
 	std::cout << std::endl;
-	mutant.insert(ite, 24);
-	std::cout << "top after insert 24:\t" << mutant.top() << std::endl;
-	std::cout << "last after insert 24 and before insert 91:\t" << mutant.back() << std::endl;
-	std::cout << std::endl;
-	ite = mutant.end();
-	it = mutant.begin();
-	mutant.insert(ite, 1991);
-	std::cout << "top after insert 91:\t" << mutant.top() << std::endl;
-	std::cout << "last after insert 91:\t" << mutant.back() << std::endl;
-	std::cout << std::endl;
-//	std::cout << "After insert size:\t" << mutant.size() << std::endl;
-	ite = mutant.end();
-	it = mutant.begin();
-	it++;
-	it++;
-//	it = mutant.begin();
-	mutant.erase(it);
-	it = mutant.begin();
-//	--it;
-	while (it < ite)
-	{
-		std::cout << "element\t" << *it << std::endl;
-		++it;
-	}
-	//std::cout << "last:\t" << mutant.back() << std::endl;
-//	const MutantStack<int> s;
-	//std::stack<int> s(mutant);
-//	std::cout << "last:\t" << mutant.back() << std::endl;
-	return 0;
+	draw_tab("List test");
+	lst.push_back(27);
+	lst.push_back(2);
+	lst.push_back(5);
+	beginL = lst.begin();
+	endL = lst.end();
+	std::cout << "\nOriginal list" << std::endl;
+	print(beginL, endL);
+	printEnds(lst);
+	std::cout << "\nRemove last element" << std::endl;
+	lst.pop_back();
+	beginL = lst.begin();
+	endL = lst.end();
+	print(beginL, endL);
+	printEnds(lst);
+	for (size_t i = 2; i < 20; i+=2)
+		lst.push_back(i);
+	std::cout << "\nInsert new elements" << std::endl;
+	beginL = lst.begin();
+	endL = lst.end();
+	lst.insert(endL, 3, 1952);
+	beginL = lst.begin();
+	endL = lst.end();
+	lst.insert(endL, 1948);
+	beginL = lst.begin();
+	endL = lst.end();
+	print(beginL, endL);
+	printEnds(lst);
+
+	return (0);
 }
-/*
-   int	main(void)
-   {
-   MutantStack<int> mutant;
-
-   std::list<int>::iterator lst = lst.push_back(5);
-   std::list<int>::iterator lit = mutant.size();
-
-   std::cout << "size:\t" << lit;
-   }*/

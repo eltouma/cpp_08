@@ -6,7 +6,7 @@
 /*   By: eltouma <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/29 17:46:07 by eltouma           #+#    #+#             */
-/*   Updated: 2024/12/02 18:42:56 by eltouma          ###   ########.fr       */
+/*   Updated: 2024/12/04 12:26:44 by eltouma          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,6 @@ int	main(void)
 		Span	vect(SIZE);
 		std::vector<int> vectTest(5);
 		size_t	vectorSize;
-		std::vector<int>::iterator it;
 
 		srand(time(NULL));
 		isMaxReached(vect, rand() % 100);
@@ -52,7 +51,6 @@ int	main(void)
 		isDistanceFound(vect);
 		std::cout << std::endl;
 		std::cout << std::endl;
-		it = vectTest.begin();
 		vect.addNumber(vectTest.begin(), vectTest.end());
 		vectorSize = vect.getVector().size();
 		draw_tab("New size: ", vectorSize);

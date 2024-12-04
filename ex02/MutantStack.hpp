@@ -6,12 +6,13 @@
 /*   By: eltouma <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/02 19:03:18 by eltouma           #+#    #+#             */
-/*   Updated: 2024/12/04 11:12:40 by eltouma          ###   ########.fr       */
+/*   Updated: 2024/12/04 17:06:37 by eltouma          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #pragma once
 #include <iostream>
+#include <cstdlib>
 #include <stack>
 
 template <typename T>
@@ -28,10 +29,12 @@ public:
 	iterator begin(void);
 	iterator end(void);
 	iterator insert(typename std::stack<T>::container_type::iterator pos, const int &n);
-	iterator erase(typename std::stack<T>::container_type::iterator pos);
-//	const MutantStack& back(void) const;
-	T& back(void);
+	void insert(typename std::stack<T>::container_type::iterator pos, size_t size, const int &n);
+	T& first(void);
 };
+
+template <typename I>
+void	print(I begin, I end);
 
 #include "MutantStack.tpp"
 

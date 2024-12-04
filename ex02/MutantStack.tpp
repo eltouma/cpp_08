@@ -44,14 +44,31 @@ typename MutantStack<T>::iterator MutantStack<T>::insert(typename std::stack<T>:
 }
 
 template <typename T>
-typename MutantStack<T>::iterator MutantStack<T>::erase(typename std::stack<T>::container_type::iterator pos)
+void MutantStack<T>::insert(typename std::stack<T>::container_type::iterator pos, size_t size, const int &n)
 {
-	return (this->c.erase(pos));
+	return (this->c.insert(pos, size, n));
 }
 
 template <typename T>
-//const MutantStack<T>& MutantStack<T>::back(void) const
-T& MutantStack<T>::back(void)
+T& MutantStack<T>::first(void)
 {
-	return (this->c.back());
+	return (this->c.at(0));
+}
+
+template <typename I>
+void	print(I begin, I end)
+{
+	std::cout << std::endl;
+	while (begin != end)
+	{
+		std::cout << *begin << " ";
+		begin++;
+	}
+	std::cout << std::endl;
+}
+
+template <typename I>
+void	printEnds(I mutant)
+{
+	std::cout << "Hello\n" << mutant;
 }

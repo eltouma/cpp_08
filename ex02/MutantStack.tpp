@@ -36,3 +36,22 @@ typename MutantStack<T>::iterator MutantStack<T>::end(void)
 {
 	return (this->c.end());
 }
+
+template <typename T>
+typename MutantStack<T>::iterator MutantStack<T>::insert(typename std::stack<T>::container_type::iterator pos, const int &n)
+{
+	return (this->c.insert(pos, n));
+}
+
+template <typename T>
+typename MutantStack<T>::iterator MutantStack<T>::erase(typename std::stack<T>::container_type::iterator pos)
+{
+	return (this->c.erase(pos));
+}
+
+template <typename T>
+//const MutantStack<T>& MutantStack<T>::back(void) const
+T& MutantStack<T>::back(void)
+{
+	return (this->c.back());
+}

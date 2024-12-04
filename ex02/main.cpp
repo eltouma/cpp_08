@@ -6,7 +6,7 @@
 /*   By: eltouma <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/02 19:03:00 by eltouma           #+#    #+#             */
-/*   Updated: 2024/12/02 21:11:36 by eltouma          ###   ########.fr       */
+/*   Updated: 2024/12/04 11:51:54 by eltouma          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,29 +14,56 @@
 #include "MutantStack.tpp"
 #include <list>
 
-int main()
+int	main()
 {
-	MutantStack<int> mstack;
-	mstack.push(5);
-	mstack.push(17);
-	std::cout << mstack.top() << std::endl;
-	mstack.pop();
-	std::cout << mstack.size() << std::endl;
-	mstack.push(3);
-	mstack.push(5);
-	mstack.push(737);
+	MutantStack<int> mutant;
+	mutant.push(5);
+	mutant.begin();
+	mutant.push(17);
+	std::cout << "top:\t" << mutant.top() << std::endl;
+//	mutant.pop();
+	std::cout << "now top:\t" << mutant.top() << std::endl;
+	std::cout << "size:\t" << mutant.size() << std::endl;
+	mutant.push(3);
+	mutant.push(5);
+	mutant.push(737);
 	//[...]
-	mstack.push(0);
-	MutantStack<int>::iterator it = mstack.begin();
-	MutantStack<int>::iterator ite = mstack.end();
-	++it;
-	--it;
-	while (it != ite)
+	mutant.push(0);
+	MutantStack<int>::iterator it = mutant.begin();
+	MutantStack<int>::iterator ite = mutant.end();
+//	std::cout << "size:\t" << mutant.size() << std::endl;
+	std::cout << std::endl;
+	std::cout << "top:\t" << mutant.top() << std::endl;
+	std::cout << "last before insert 24:\t" << mutant.back() << std::endl;
+	std::cout << std::endl;
+	mutant.insert(ite, 24);
+	std::cout << "top after insert 24:\t" << mutant.top() << std::endl;
+	std::cout << "last after insert 24 and before insert 91:\t" << mutant.back() << std::endl;
+	std::cout << std::endl;
+	ite = mutant.end();
+	it = mutant.begin();
+	mutant.insert(ite, 1991);
+	std::cout << "top after insert 91:\t" << mutant.top() << std::endl;
+	std::cout << "last after insert 91:\t" << mutant.back() << std::endl;
+	std::cout << std::endl;
+//	std::cout << "After insert size:\t" << mutant.size() << std::endl;
+	ite = mutant.end();
+	it = mutant.begin();
+	it++;
+	it++;
+//	it = mutant.begin();
+	mutant.erase(it);
+	it = mutant.begin();
+//	--it;
+	while (it < ite)
 	{
-		std::cout << *it << std::endl;
+		std::cout << "element\t" << *it << std::endl;
 		++it;
 	}
-	std::stack<int> s(mstack);
+	//std::cout << "last:\t" << mutant.back() << std::endl;
+//	const MutantStack<int> s;
+	//std::stack<int> s(mutant);
+//	std::cout << "last:\t" << mutant.back() << std::endl;
 	return 0;
 }
 /*
